@@ -9,13 +9,13 @@ const colores ={
 
 const Formulario = styled.form`
 background-color: rgba(44, 44, 60, 0.7);
-padding: 1rem;
+padding: 2rem;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 border-radius: 10px;
-height: 45vh;
+height:65vh;
 width: 35%;
 `;
 
@@ -26,10 +26,11 @@ padding:1rem;
 `;
 
 const IconoUsuario = styled(FontAwesomeIcon)`
-	font-size: 80px;
+	font-size: 6.5rem;
 	z-index: 100;
     color: ${colores.borde};
-	
+	margin: 1rem;
+
 `;
 
 
@@ -59,9 +60,11 @@ const Input = styled.input`
 
 const LeyendaError = styled.p`
 	font-size: 13px;
-    font-weight: 800;
+    font-weight: 600;
 	margin-bottom: 0;
-	color: ${colores.falla};
+	color: ${colores.borde};
+
+	display:none;
 `;
 
 const IconoValidacion = styled(FontAwesomeIcon)`
@@ -71,8 +74,62 @@ const IconoValidacion = styled(FontAwesomeIcon)`
 	z-index: 100;
 	font-size: 16px;
     color: ${colores.exito};
-	
+	opacity: 0;
 `;
 
+const MensajeError = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgb(223, 94, 94);
+width: 95%;
+border-radius: 3px;
+color:#fff;
+padding:0.2rem;
+font-size: 0.9rem;
 
-export {Formulario,H2,GrupoInput,Input,LeyendaError,IconoValidacion,IconoUsuario}
+
+`;
+
+const BotonInicio = styled.div`	
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: 1rem;
+width: 100%;
+h3,a{
+	color: #fff;
+}
+`;
+
+const Boton = styled.button`	
+	margin: 0.2rem;
+    border-radius: 5px;
+	color:#572612;
+    padding: 0.2rem;
+	font-size: 1rem;
+    border: none;
+    background-color: #F9D544;
+    width: 30%;
+    height: max-content;
+    cursor: pointer;
+
+	&:hover{
+		background-color: #fff;
+
+	}
+`;
+
+export {
+	Formulario,
+	H2,
+	GrupoInput,
+	Input,
+	LeyendaError,
+	IconoValidacion,
+	IconoUsuario,
+	BotonInicio,
+	Boton, 
+	MensajeError
+}
