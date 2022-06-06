@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const colores ={
@@ -26,10 +26,10 @@ padding:1rem;
 `;
 
 const IconoUsuario = styled(FontAwesomeIcon)`
-	font-size: 6.5rem;
+	font-size: 5rem;
 	z-index: 100;
     color: ${colores.borde};
-	margin: 1rem;
+	margin: 0.5rem;
 
 `;
 
@@ -49,11 +49,19 @@ const Input = styled.input`
     margin-top: 1rem;
 	transition: .3s ease all;
 	border: 3px solid transparent;
+	
 	&:focus {
 		border: 3px solid ${colores.borde};
 		outline: none;
 		box-shadow: 3px 0px 30px rgba(163,163,163, 0.7);
 	}
+
+	${props => props.valido === 'true' && css`
+		border: 3px solid transparent;
+	`}
+	${props => props.valido === 'false' && css`
+		border: 3px solid ${colores.falla} !important;
+	`}
 
 `;
 
@@ -65,6 +73,13 @@ const LeyendaError = styled.p`
 	color: ${colores.borde};
 
 	display:none;
+
+	${props => props.valido === 'true' && css`
+		display:none;
+	`}
+	${props => props.valido === 'false' && css`
+		display: block;
+	`}
 `;
 
 const IconoValidacion = styled(FontAwesomeIcon)`
@@ -75,6 +90,15 @@ const IconoValidacion = styled(FontAwesomeIcon)`
 	font-size: 16px;
     color: ${colores.exito};
 	opacity: 0;
+
+	${props => props.valido === 'false' && css`
+		opacity: 1;
+		color: ${colores.falla};
+	`}
+	${props => props.valido === 'true' && css`
+		opacity: 1;
+		color: ${colores.exito};
+	`}
 `;
 
 const MensajeError = styled.div`
@@ -87,16 +111,31 @@ border-radius: 3px;
 color:#fff;
 padding:0.2rem;
 font-size: 0.9rem;
-
+margin-top: 0.3rem;
 
 `;
+
+const MensajeExito= styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgb(67, 158, 62);;
+width: 95%;
+border-radius: 3px;
+color:#fff;
+padding:0.2rem;
+font-size: 0.9rem;
+margin: 0.3rem;
+
+`;
+
 
 const BotonInicio = styled.div`	
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-margin: 1rem;
+margin: 0.5rem;
 width: 100%;
 h3,a{
 	color: #fff;
@@ -104,7 +143,7 @@ h3,a{
 `;
 
 const Boton = styled.button`	
-	margin: 0.2rem;
+	margin-top:0.5rem
     border-radius: 5px;
 	color:#572612;
     padding: 0.2rem;
@@ -131,5 +170,6 @@ export {
 	IconoUsuario,
 	BotonInicio,
 	Boton, 
-	MensajeError
+	MensajeError,
+	MensajeExito
 }
